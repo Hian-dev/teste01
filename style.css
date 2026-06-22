@@ -38,10 +38,11 @@ body {
 
 /* HEADER RESPONSIVO */
 header {
-    padding: 20px 0;
-    position: absolute;
+   padding: 20px 0;
+    position: absolute; /* Fixa o header por cima do Hero */
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 100;
 }
 
@@ -49,13 +50,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite que quebre linha se o espaço acabar */
-    gap: 15px;
+    width: 100%;
 }
 
 .logo {
-    width: 100%;
-    max-width: 250px;
+    width: 250px; /* Mantém o tamanho original */
+    max-width: 100%;
     height: auto;
     letter-spacing: -1px;
     background: linear-gradient(45deg, #fff, var(--secondary));
@@ -76,7 +76,8 @@ header {
     position: relative;
     background: radial-gradient(circle at 80% 20%, rgba(0, 195, 247, 0.15), transparent 40%),
                 radial-gradient(circle at 20% 80%, rgba(0, 80, 195, 0.25), transparent 50%);
-    padding: 120px 0 60px 0; /* Padding superior aumentado para não sobrepor o header fixed/absolute */
+    /* Espaçamento superior dinâmico para dar espaço à logo no mobile sem quebrar o fundo */
+    padding: 140px 0 60px 0;
 }
 
 .hero-grid {
@@ -300,7 +301,6 @@ header {
 .course-list li {
     font-size: 0.95rem;
     padding: 10px 0;
-    color: #333333; /* Corrigido de #f8f6f6 (branco) para cinza escuro, pois o fundo do card é branco */
     border-bottom: 1px solid #f0f0f0;
     display: flex;
     align-items: center;
@@ -364,12 +364,18 @@ header {
     }
     
     .header-content {
-        justify-content: center;
+       justify-content: center; /* Centraliza a logo em smartphones, se preferir */
         text-align: center;
     }
 
+   .logo {
+        width: 200px; /* Reduz levemente a logo em telas pequenas para não esmagar */
+    }
+
     .hero {
-        padding-top: 40px;
+        padding-top: 120px; /* Garante que o texto do hero não suba para trás da logo centralizada */
+        min-height: auto; /* Permite que o hero cresça na vertical caso o formulário seja comprido */
+    }
     }
     
     .divcards {
@@ -393,7 +399,7 @@ header {
     .card {
         width: 85%; /* Dá espaço para as setas nas laterais */
     }
-}
+
 
 /* FOOTER */
 footer {

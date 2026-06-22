@@ -359,8 +359,10 @@ header {
    ========================================================================== */
 @media (max-width: 768px) {
     header {
-        position: relative; /* Evita sobreposição do formulário em telas mobile */
-        background-color: var(--dark);
+        position: absolute; /* Mantém absoluto, mas agora preparado para o fundo */
+        background-color: var(--dark); /* O fundo escuro cobre a área da logo */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil opcional para separar */
+        padding: 15px 0;
     }
     
     .header-content {
@@ -369,11 +371,11 @@ header {
     }
 
    .logo {
-        width: 200px; /* Reduz levemente a logo em telas pequenas para não esmagar */
+        width: 190px; /* Reduz levemente a logo em telas pequenas para não esmagar */
     }
 
     .hero {
-        padding-top: 120px; /* Garante que o texto do hero não suba para trás da logo centralizada */
+        padding-top: 180px; /* Garante que o texto do hero não suba para trás da logo centralizada */
         min-height: auto; /* Permite que o hero cresça na vertical caso o formulário seja comprido */
     }
     }

@@ -355,36 +355,45 @@ header {
 }
 
 /* ==========================================================================
-   MEDIA QUERIES COMPLEMENTARES (TABLETS E SMARTPHONES)
+   MEDIA QUERIES ATUALIZADO (Fundo até o topo com Header flutuando)
    ========================================================================== */
 @media (max-width: 768px) {
     header {
-        position: absolute; /* Mantém absoluto, mas agora preparado para o fundo */
-        background-color: var(--dark); /* O fundo escuro cobre a área da logo */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil opcional para separar */
-        padding: 15px 0;
+        position: absolute; /* Mantém absoluto para flutuar SOBRE a imagem */
+        top: 0;
+        left: 0;
+        width: 100%;
+        /* Usamos um fundo escuro com transparência (RGBA). O '0.45' é a opacidade.
+           Isso protege a leitura da logo, mas permite que a imagem do Hero apareça até o topo! */
+        background: rgba(15, 23, 42, 0.45); 
+        backdrop-filter: blur(4px); /* Dá um efeito de vidro fosco elegante no topo */
+        -webkit-backdrop-filter: blur(4px);
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     .header-content {
-       justify-content: center; /* Centraliza a logo em smartphones, se preferir */
+        justify-content: center;
         text-align: center;
     }
 
-   .logo {
-        width: 190px; /* Reduz levemente a logo em telas pequenas para não esmagar */
+    .logo {
+        width: 190px;
     }
 
     .hero {
-        padding-top: 180px; /* Garante que o texto do hero não suba para trás da logo centralizada */
-        min-height: auto; /* Permite que o hero cresça na vertical caso o formulário seja comprido */
-    }
+        /* IMPORTANTE: Mudamos para cobrir tudo desde o topo absoluto */
+        margin-top: 0; 
+        padding-top: 140px; /* Espaço para a logo não cobrir o texto principal */
+        min-height: auto;
+        background-attachment: scroll;
     }
     
+    /* Ajustes do Carrossel Mobile */
     .divcards {
         position: relative;
     }
     
-    /* Reposicionamento das setas no mobile para não esmagar o card */
     .seta {
         position: absolute;
         top: 50%;
@@ -399,16 +408,6 @@ header {
     #seta-direita { right: 5px; }
     
     .card {
-        width: 85%; /* Dá espaço para as setas nas laterais */
+        width: 85%;
     }
-
-
-/* FOOTER */
-footer {
-    padding: 40px 15px;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--gray);
-    font-size: 0.9rem;
-    background-color: var(--dark);
 }

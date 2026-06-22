@@ -1,0 +1,406 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS, RESETS E VARIÁVEIS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #0050C3;
+    --secondary: #00C3F7;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CONTAINER GLOBAL RE-ESTRUTURADO */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER RESPONSIVO */
+header {
+    padding: 20px 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que quebre linha se o espaço acabar */
+    gap: 15px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    letter-spacing: -1px;
+    background: linear-gradient(45deg, #fff, var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   HERO SECTION & GRID
+   ========================================================================== */
+.hero {
+    background-image: url(IMAGENS/background.png) !important;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(circle at 80% 20%, rgba(0, 195, 247, 0.15), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(0, 80, 195, 0.25), transparent 50%);
+    padding: 120px 0 60px 0; /* Padding superior aumentado para não sobrepor o header fixed/absolute */
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-text {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: clamp(20px, 5vw, 40px); /* Padding dinâmico baseado no tamanho da tela */
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.2s ease-out;
+}
+
+/* Tipografia Fluida para Títulos */
+.hero-text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-out;
+    -webkit-text-stroke: 1px #0050C3;
+}
+
+.hero-text h1 span {
+    background: linear-gradient(45deg, var(--secondary), #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out;
+}
+
+/* FORMULÁRIO CAPTAÇÃO DE LEADS */
+.form-container {
+    background-color: var(--dark);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+    justify-self: center;
+    animation: fadeIn 1.2s ease-out;
+    margin: 30px auto;
+}
+
+.form-container h3 {
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.form-container p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group select option {
+    background: var(--dark);
+    color: #fff;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 195, 247, 0.2);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 80, 195, 0.3);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 195, 247, 0.4);
+}
+
+/* ==========================================================================
+   SEÇÃO DIFERENCIAIS (FEATURES)
+   ========================================================================== */
+.features {
+    padding: clamp(60px, 10vw, 100px) 0;
+    background: #090d16;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 15px;
+}
+
+.section-title h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    box-shadow: 0 15px 30px rgba(0, 195, 247, 0.1);
+}
+
+/* ==========================================================================
+   SEÇÃO GRID DE CURSOS / CATEGORIAS
+   ========================================================================== */
+.sessao-grid {
+    padding: clamp(40px, 8vw, 80px) 0;
+    margin: 0 auto; /* Removido margem fixa estourada de 110px */
+}
+
+.container-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-grid {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-grid h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.titulo-grid::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #0056b3;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Substituído o 'repeat(2, 1fr)' fixo */
+    gap: 25px;
+}
+
+.category-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid #eef2f5;
+}
+
+.category-title {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-list {
+    list-style: none;
+    padding: 20px;
+}
+
+.course-list li {
+    font-size: 0.95rem;
+    padding: 10px 0;
+    color: #333333; /* Corrigido de #f8f6f6 (branco) para cinza escuro, pois o fundo do card é branco */
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+}
+
+/* ==========================================================================
+   CARROSSEL RESPONSIVO
+   ========================================================================== */
+.carrossel {
+    background-color: #1a1a1a;
+    padding: 40px 0;
+}
+
+.carrossel-titulo {
+    color: #ffffff;
+    padding: 40px 20px;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.divcards {
+    display: flex; /* Mudado de Grid para Flex para alinhamento horizontal dinâmico */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px 40px 15px;
+}
+
+.seta {
+    cursor: pointer;
+    flex-shrink: 0; /* Impede a seta de amassar em telas pequenas */
+    width: 35px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.seta:hover {
+    transform: translateY(-5px);
+}
+
+.card {
+    width: 100%;
+    max-width: 500px; /* Largura controlada */
+    border-radius: 15px; 
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+    will-change: transform, opacity;         
+}
+
+/* ==========================================================================
+   MEDIA QUERIES COMPLEMENTARES (TABLETS E SMARTPHONES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        position: relative; /* Evita sobreposição do formulário em telas mobile */
+        background-color: var(--dark);
+    }
+    
+    .header-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+    
+    .divcards {
+        position: relative;
+    }
+    
+    /* Reposicionamento das setas no mobile para não esmagar o card */
+    .seta {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 50px;
+        padding: 5px;
+    }
+    
+    #seta-esquerda { left: 5px; }
+    #seta-direita { right: 5px; }
+    
+    .card {
+        width: 85%; /* Dá espaço para as setas nas laterais */
+    }
+}
+
+/* FOOTER */
+footer {
+    padding: 40px 15px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--gray);
+    font-size: 0.9rem;
+    background-color: var(--dark);
+}
